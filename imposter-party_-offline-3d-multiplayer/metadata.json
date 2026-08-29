@@ -1,6 +1,0 @@
-{
-  "name": "Imposter Party: Offline 3D Multiplayer",
-  "description": "Production-ready offline multiplayer party game in Kotlin and Jetpack Compose with custom animal avatars, Pass & Play hold-to-reveal secret cards, Local Wi-Fi NSD sockets, and interactive Android simulator.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
