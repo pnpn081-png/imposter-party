@@ -5,7 +5,13 @@
   "icons": [
     {
       "src": "app-icon.jpg",
-      "type": "image/jpeg",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "app-icon.jpg",
+      "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
