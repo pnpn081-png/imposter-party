@@ -1,20 +1,21 @@
-const CACHE_NAME = 'imposter-party-v1';
+const CACHE_NAME = 'imposter-party-v2';
 
-// Install event - caches all core shell assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
         './',
         './index.html',
-        './manifest.json'
+        './manifest.json',
+        './icon-192.png',
+        './icon-512.png',
+        './app-icon.jpg'
       ]);
     })
   );
   self.skipWaiting();
 });
 
-// Activate event - cleans up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -30,27 +31,22 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch event - serves assets from cache first, falls back to network if available
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
         return cachedResponse;
       }
-      return fetch(event.request).then((response) => {
-        // Cache newly fetched static assets on the fly
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
+      return fetch(event.request).then((networkResponse) => {
+        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+          return networkResponse;
         }
-        const responseToCache = response.clone();
+        const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {
           cache.put(event.request, responseToCache);
         });
-        return response;
+        return networkResponse;
       });
-    }).catch(() => {
-      // Offline fallback
-      return caches.match('./index.html');
     })
   );
 });
