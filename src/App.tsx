@@ -56,7 +56,7 @@ export default function App() {
             <header className="flex items-center justify-between px-4 py-3 bg-[#161B22] border-b border-slate-800 z-20 shrink-0">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded bg-gradient-to-tr from-amber-500 via-rose-500 to-cyan-400 p-[1px]">
-                  <img src="/app-icon.jpg" alt="Logo" className="w-full h-full object-cover rounded-sm" />
+                  <img src="./app-icon.jpg" alt="Logo" className="w-full h-full object-cover rounded-sm" />
                 </div>
                 <span className="text-[13px] font-black tracking-wider text-slate-100 uppercase">IMPOSTER PARTY</span>
               </div>
@@ -159,4 +159,3 @@ export default function App() {
     </div>
   );
 }
-
