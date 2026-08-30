@@ -1,11 +1,18 @@
 {
+  "id": "./",
   "short_name": "ImposterParty",
   "name": "Imposter Party 3D",
   "description": "Offline 3D Multiplayer Game",
   "icons": [
     {
-      "src": "app-icon.jpg",
-      "type": "image/jpeg",
+      "src": "./icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
