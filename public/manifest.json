@@ -4,8 +4,8 @@
   "description": "Offline 3D Multiplayer Game",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3094/3094364.png",
-      "type": "image/png",
+      "src": "./app-icon.jpg",
+      "type": "image/jpeg",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
