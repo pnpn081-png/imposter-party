@@ -4,13 +4,13 @@
   "description": "Offline 3D Multiplayer Game",
   "icons": [
     {
-      "src": "app-icon.jpg",
+      "src": "public/app-icon.jpg",
       "type": "image/jpeg",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "app-icon.jpg",
+      "src": "public/app-icon.jpg",
       "type": "image/jpeg",
       "sizes": "512x512",
       "purpose": "any maskable"
