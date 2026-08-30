@@ -58,7 +58,7 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
   return (
     <div className="flex flex-col items-center w-full max-w-sm mx-auto">
       {/* Animal Avatar positioned atop the card */}
-      <div className="relative -mb-9 z-30 pointer-events-none transition-transform duration-300">
+      <div className="relative -mb-9 z-30 pointer-events-none transition-transform duration-150">
         <Avatar2D
           avatarType={effectiveAvatar}
           role={role}
@@ -81,7 +81,7 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
         {/* INTERIOR CHAMBER (Revealed when iron doors slide open)   */}
         {/* ========================================================= */}
         <div
-          className={`absolute inset-0 p-6 flex flex-col justify-center items-center text-center transition-colors duration-300 ${
+          className={`absolute inset-0 p-6 flex flex-col justify-center items-center text-center transition-colors duration-150 ${
             isImposter
               ? 'bg-gradient-to-b from-[#1C0F14] via-[#2B0E17] to-[#12070B]'
               : 'bg-gradient-to-b from-[#0A1626] via-[#0E2238] to-[#07111D]'
@@ -89,14 +89,14 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
         >
           {/* Subtle Ambient Radial Lighting */}
           <div
-            className={`absolute inset-0 blur-3xl opacity-40 pointer-events-none transition-opacity duration-300 ${
+            className={`absolute inset-0 blur-3xl opacity-40 pointer-events-none transition-opacity duration-150 ${
               isImposter ? 'bg-rose-600' : 'bg-cyan-500'
             }`}
           />
 
           {/* Chamber Content */}
           {isImposter ? (
-            <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-200 z-10 pointer-events-none">
+            <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-100 z-10 pointer-events-none">
               <div className="w-20 h-20 rounded-2xl bg-rose-500/20 border-2 border-rose-500/60 flex items-center justify-center text-rose-400 mb-4 shadow-xl shadow-rose-950/80">
                 <ShieldAlert className="w-11 h-11 text-rose-400 animate-pulse" />
               </div>
@@ -106,7 +106,7 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
               </h2>
             </div>
           ) : (
-            <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-200 z-10 pointer-events-none w-full px-2">
+            <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-100 z-10 pointer-events-none w-full px-2">
               <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border-2 border-cyan-500/50 flex items-center justify-center text-cyan-400 mb-3 shadow-lg shadow-cyan-950/70">
                 <UserCheck className="w-7 h-7 text-cyan-400" />
               </div>
@@ -138,9 +138,9 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
           }}
           transition={{
             type: 'spring',
-            stiffness: 180,
-            damping: 22,
-            mass: 0.9
+            stiffness: 450,
+            damping: 28,
+            mass: 0.4
           }}
           style={{
             background: 'linear-gradient(135deg, #2D333B 0%, #22272E 40%, #161B22 100%)',
@@ -198,9 +198,9 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
           }}
           transition={{
             type: 'spring',
-            stiffness: 180,
-            damping: 22,
-            mass: 0.9
+            stiffness: 450,
+            damping: 28,
+            mass: 0.4
           }}
           style={{
             background: 'linear-gradient(225deg, #2D333B 0%, #22272E 40%, #161B22 100%)',
@@ -257,7 +257,7 @@ export const HoldToReveal: React.FC<HoldToRevealProps> = ({
             opacity: isHolding ? 0 : 1,
             scale: isHolding ? 0.92 : 1
           }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.1 }}
         >
           <div />
 
