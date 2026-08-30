@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldAlert, Sparkles, Cpu, CheckCircle } from 'lucide-react';
+import appIcon from '../../../public/app-icon.jpg';
 import { soundEffects } from '../../utils/audio';
 
 interface SplashScreenProps {
@@ -48,7 +49,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onLoadingComplete })
           {/* App Profile Picture */}
           <div className="relative w-28 h-28 rounded-3xl bg-slate-900 border-2 border-amber-500/70 p-1.5 shadow-2xl shadow-amber-500/30">
             <img
-              src="/app-icon.jpg"
+              src={appIcon}
               alt="Imposter Party App Profile"
               className="w-full h-full object-cover rounded-2xl"
               referrerPolicy="no-referrer"
