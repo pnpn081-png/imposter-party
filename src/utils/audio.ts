@@ -4,6 +4,44 @@ class SoundEngine {
   private ctx: AudioContext | null = null;
   private holdOsc: OscillatorNode | null = null;
   private holdGain: GainNode | null = null;
+  private isEnabled: boolean = true;
+
+  constructor() {
+    const saved = localStorage.getItem('imposter_sound_enabled');
+    if (saved !== null) {
+      this.isEnabled = saved === 'true';
+    }
+  }
+
+  public toggleSound(): boolean {
+    this.isEnabled = !this.isEnabled;
+    localStorage.setItem('imposter_sound_enabled', String(this.isEnabled));
+    if (!this.isEnabled) {
+      this.stopHold();
+    }
+    return this.isEnabled;
+  }
+
+  public getSoundEnabled(): boolean {
+    return this.isEnabled;
+  }
+
+  public setSoundEnabled(enabled: boolean): void {
+    this.isEnabled = enabled;
+    localStorage.setItem('imposter_sound_enabled', String(enabled));
+    if (!this.isEnabled) {
+      this.stopHold();
+    }
+  }
+
+  public vibrate(pattern: number | number[] = [40, 30, 40]) {
+    if (!this.isEnabled) return;
+    if ('vibrate' in navigator) {
+      try {
+        navigator.vibrate(pattern);
+      } catch {}
+    }
+  }
 
   private init() {
     if (!this.ctx) {
@@ -18,6 +56,7 @@ class SoundEngine {
   }
 
   playTap() {
+    if (!this.isEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
@@ -42,6 +81,8 @@ class SoundEngine {
   }
 
   startHold() {
+    if (!this.isEnabled) return;
+    this.vibrate([40, 30, 40]);
     try {
       this.init();
       if (!this.ctx) return;
@@ -84,11 +125,11 @@ class SoundEngine {
   }
 
   playReveal() {
+    if (!this.isEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
 
-      // Equalized high-tech vault release chime for ALL players (identical for crewmate & imposter to prevent eavesdropping)
       const frequencies = [330, 440, 554.37, 659.25]; // E4, A4, C#5, E5
       frequencies.forEach((freq, idx) => {
         if (!this.ctx) return;
@@ -111,11 +152,11 @@ class SoundEngine {
   }
 
   playDoorOpen() {
+    if (!this.isEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
       
-      // Heavy mechanical latch release click
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'sawtooth';
@@ -133,11 +174,11 @@ class SoundEngine {
   }
 
   playDoorClose() {
+    if (!this.isEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
       
-      // Heavy iron door slam shut impact
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'triangle';
@@ -155,6 +196,7 @@ class SoundEngine {
   }
 
   playTick(isWarning: boolean = false) {
+    if (!this.isEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
@@ -176,6 +218,8 @@ class SoundEngine {
   }
 
   playWinner() {
+    if (!this.isEnabled) return;
+    this.vibrate([100, 50, 100, 50, 150]);
     try {
       this.init();
       if (!this.ctx) return;
