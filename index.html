@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Imposter Party: Offline 3D Multiplayer</title>
     <meta name="description" content="Production-ready offline multiplayer party game with custom animal avatars, Pass & Play hold-to-reveal secret cards, and Local Wi-Fi / Hotspot rooms." />
-    <link rel="icon" type="image/jpeg" href="/app-icon.jpg" />
-    <meta property="og:image" content="/app-icon.jpg" />
+    <link rel="icon" type="image/jpeg" href="./app-icon.jpg" />
+    <meta property="og:image" content="./app-icon.jpg" />
     <meta property="og:title" content="Imposter Party: Offline 3D Multiplayer" />
     <meta property="og:description" content="Production-ready offline multiplayer party game with custom animal avatars, Pass & Play hold-to-reveal secret cards, and Local Wi-Fi / Hotspot rooms." />
     <meta property="og:type" content="website" />
@@ -15,16 +15,15 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
     <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log('Service Worker registered successfully:', reg.scope))
-        .catch(err => console.error('Service Worker registration failed:', err));
-    });
-  }
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+            .catch(err => console.error('Service Worker registration failed:', err));
+        });
+      }
     </script>
   </body>
 </html>
-
